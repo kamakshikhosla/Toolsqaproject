@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="92548" started-at="2017-12-13T07:22:10Z" finished-at="2017-12-13T07:23:42Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="92548" started-at="2017-12-13T07:22:10Z" finished-at="2017-12-13T07:23:42Z">
+      <class name="testing8.HomeTest">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:testing8.HomeTest@1efed156]" name="setUp" is-config="true" duration-ms="3202" started-at="2017-12-12T23:22:07Z" finished-at="2017-12-12T23:22:10Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="test3()[pri:1, instance:testing8.HomeTest@1efed156]" name="test3" duration-ms="56432" started-at="2017-12-12T23:22:10Z" finished-at="2017-12-12T23:23:06Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test3 -->
+        <test-method status="PASS" signature="GotoHomePage()[pri:2, instance:testing8.HomeTest@1efed156]" name="GotoHomePage" duration-ms="36087" started-at="2017-12-12T23:23:06Z" finished-at="2017-12-12T23:23:42Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- GotoHomePage -->
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:testing8.HomeTest@1efed156]" name="tearDownClass" is-config="true" duration-ms="3" started-at="2017-12-12T23:23:42Z" finished-at="2017-12-12T23:23:42Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- testing8.HomeTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

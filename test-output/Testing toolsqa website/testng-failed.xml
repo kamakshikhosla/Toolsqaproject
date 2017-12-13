@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Testing toolsqa website]">
+  <test name="Run all test(failed)">
+    <classes>
+      <class name="testing8.formtest">
+        <methods>
+          <include name="formtest"/>
+          <include name="tearDownClass"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- testing8.formtest -->
+      <class name="testing8.hometest">
+        <methods>
+          <include name="GotoHomePage"/>
+          <include name="tearDownClass"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- testing8.hometest -->
+    </classes>
+  </test> <!-- Run all test(failed) -->
+</suite> <!-- Failed suite [Testing toolsqa website] -->

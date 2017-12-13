@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="3" guice-stage="DEVELOPMENT" verbose="10" name="Failed suite [Suite]" parallel="methods">
+  <listeners>
+    <listener class-name="testing8.ListenerTest"/>
+  </listeners>
+  <test name="TestCase1(failed)" parallel="methods">
+    <classes>
+      <class name="testing8.CucumberTest">
+        <methods>
+          <include name="goTosubcategory"/>
+          <include name="tearDownClass"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- testing8.CucumberTest -->
+    </classes>
+  </test> <!-- TestCase1(failed) -->
+  <test name="TestCase2(failed)" parallel="methods">
+    <classes>
+      <class name="testing8.FormTest">
+        <methods>
+          <include name="tearDownClass"/>
+          <include name="setUp"/>
+          <include name="formtest"/>
+        </methods>
+      </class> <!-- testing8.FormTest -->
+    </classes>
+  </test> <!-- TestCase2(failed) -->
+  <test name="TestCase3(failed)" parallel="methods">
+    <groups>
+      <run>
+        <include name="strong_ties"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="testing8.HomeTest">
+        <methods>
+          <include name="GotoHomePage"/>
+        </methods>
+      </class> <!-- testing8.HomeTest -->
+    </classes>
+  </test> <!-- TestCase3(failed) -->
+</suite> <!-- Failed suite [Suite] -->
