@@ -27,6 +27,7 @@ import org.testng.annotations.Test;
 //import com.thoughtworks.selenium.Wait;
 
 import org.testng.ITest;
+import org.testng.Reporter;
 import org.testng.SuiteRunner;
 import org.testng.TestNG;
 //import static org.junit.Assert.*;
@@ -47,7 +48,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import utilities.Config;
+import utilities.ConfigBase;
 import testing8.Home;
 
 //@Listeners(ListenerTest.class)
@@ -64,12 +65,13 @@ public class HomeTest extends Base
     String url4;
     private static final Logger log= Logger.getLogger("devpinoyLogger");
     
-    @Test(priority=1)
-	 public void test3() throws InterruptedException
+    @Test(retryAnalyzer =testing8.ListenerTest.class)
+	 public void atest3() throws InterruptedException
 	 {
-
+    	Reporter.log("Bravo!! test case passed");
 		 driver.get("http://store.demoqa.com/products-page/product-category/ipods/apple-ipod-touch-32gb-5th-generation-black/");
-driver.findElement(By.className("wpsc_buy_button")).click();
+driver.manage().window().maximize();
+		 driver.findElement(By.className("wpsc_buy_button")).click();
 Thread.sleep(2000);
 String type1=driver.findElement(By.className("wpsc_buy_button")).getAttribute("type");
 System.out.println(type1);
@@ -100,12 +102,13 @@ if(ac3.getText().equalsIgnoreCase(val1))
 
 	 }
     
-    @Test(priority=2)
+    @Test(retryAnalyzer =testing8.ListenerTest.class)
     public void GotoHomePage() throws IOException, InterruptedException
     {
+    	Reporter.log("Bravo!! test case passed");
         t1=new HomeTest();
         t2=new Home(driver);
-        String ccpage=Config.BaseUrl;
+        String ccpage=ConfigBase.BaseUrl;
      //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
      driver.get(ccpage);
      //ArrayList<String> hand1=new ArrayList(driver.getWindowHandles());
@@ -113,7 +116,7 @@ if(ac3.getText().equalsIgnoreCase(val1))
      //driver.switchTo().window(hand1.get(1));
      driver.manage().window().maximize();
      t1.search(t2.search1);
-     t1.searchtext(t2.searchtext,Config.search);
+     t1.searchtext(t2.searchtext,ConfigBase.search);
      //t1.switch1();
      t1.hover1(t2.mainnav);
      t1.subhover(t2.subnav);
@@ -172,7 +175,7 @@ if(ac3.getText().equalsIgnoreCase(val1))
        String HoverElement=e3.getText();
        String attr=e3.getAttribute("data-level");
       System.out.println(attr);
-      if(HoverElement.equalsIgnoreCase(Config.hover) && attr.equalsIgnoreCase("1"))
+      if(HoverElement.equalsIgnoreCase(ConfigBase.hover) && attr.equalsIgnoreCase("1"))
       {
        System.out.println("Hover on Element:"+HoverElement);
         System.out.println("welcome");

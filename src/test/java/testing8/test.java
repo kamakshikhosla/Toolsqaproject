@@ -10,10 +10,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 //import org.sikuli.script.*;
 //import org.sikuli.script.Screen;
@@ -25,7 +27,7 @@ import org.testng.annotations.Test;
 //import org.sikuli.script.Screen;
 
 
-import utilities.Config;
+import utilities.ConfigBase;
 
 public class test 
 {
@@ -40,33 +42,29 @@ public class test
 	     public static void setUp() 
 	     {
 		  // DOMConfigurator.configure("src/test/resources/log4j.properties"); 
-	      System.setProperty("webdriver.chrome.driver","C:\\Users\\1037361\\workspace\\testing8\\src\\test\\resources\\chromedriver.exe");
+	      System.setProperty("webdriver.gecko.driver","C:\\Users\\1037361\\Desktop\\geckodriver.exe");
 	      //System.setProperty("webdriver.firefox.driver","D:\\geckodriver.exe");
-	      if(Config.browser!=null)
-	      {
-	          if(Config.browser.equalsIgnoreCase("chrome"))
-	          {
-	             driver  = new ChromeDriver(); 
-	            
-	            log.debug("browser chrome is opened");
-	          }
-	          else if(Config.browser.equalsIgnoreCase("firefox"))
-	          {
-	             //driver  = new FirefoxDriver();
-	          }
-	      }
-	      else
-	       {
-	      System.out.println("default browser");
-	      driver  = new ChromeDriver();  
-	      log.debug("Open Chrome Broweser");
-	       } 
+	     
+	             driver  = new FirefoxDriver();
+	       
 	     // driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	     // driver.manage().deleteAllCookies();
 	     // driver.manage().window().maximize();
 	     // driver.manage().timeouts().setScriptTimeout(60,TimeUnit.SECONDS);
 	     // driver.navigate().refresh();
 	     }
+	   @DataProvider(name="Authentication")
+	   public static Object[][] credentials()
+	   {
+		   return new Object[][]{{"testuser_1", "Test@123"},{"testuser_1", "Test@123"}};
+	   }
+	   @Test(dataProvider="Authentication")
+		   public void setup1(String sUsername, String sPassword)
+		   {
+		   driver.get("https://accounts.google.com/");
+		   driver.findElement(By.id("identifierId")).sendKeys(sUsername);
+		   driver.findElement(By.xpath("//div[@class=\"Xb9hP\"]/input")).sendKeys(sPassword);
+		   }
 	   
 	 @AfterSuite
 	 
@@ -109,7 +107,7 @@ public class test
 		 log.debug("Browser closed");
 
 	 }
-	 @Test
+	 @Test(retryAnalyzer =testing8.ListenerTest.class)
 	 public void test5()
 	 {
 		 driver.get("http://demo.guru99.com/selenium/drag_drop.html");
@@ -124,12 +122,12 @@ public class test
 		 
 		 
 	 }
-	 @Test(priority=1)
-	 public void test3() throws InterruptedException
+	 @Test(retryAnalyzer =testing8.ListenerTest.class)
+	 public void atest3() throws InterruptedException
 	 {
 		 driver.get("http://toolsqa.com/automation-practice-form/");
 		 driver.manage().window().maximize();
-		 driver.findElement(By.id("photo")).click();
+		 driver.findElement(By.id("photo1")).click();
 		 //driver.findElement(By.xpath("//a[@href=contains(text(),'array formula calendar.xls')]")).click();
 		 
 		try {
