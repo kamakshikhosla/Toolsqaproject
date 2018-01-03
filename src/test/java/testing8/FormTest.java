@@ -23,6 +23,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.TestRunner;
 import org.testng.ITest;
+import org.testng.Reporter;
 import org.testng.SuiteRunner;
 import org.testng.TestNG;
 import org.apache.log4j.xml.DOMConfigurator;
@@ -32,7 +33,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
-import utilities.Config;
+import utilities.ConfigBase;
 
 //@Listeners(ListenerTest.class)
 
@@ -46,21 +47,22 @@ public class FormTest extends Base
 	    
 	  
 	   
-	     @Test()
+	     @Test(retryAnalyzer =testing8.ListenerTest.class)
 	     public void formtest() throws IOException, InterruptedException
 	     {
 	       System.out.println("************Welcome*****************");
+	       Reporter.log("Bravo!! test case passed");
 	    	 p1=new FormTest();
 	    	 p2=new Form(driver);
 	    	 //DOMConfigurator.configure("src/test/resources/log4j.properties");
 	    	 //Logger log = Logger.getLogger(FormTest.class.getName());
-	    	    driver.get(Config.formUrl);
+	    	    driver.get(ConfigBase.formUrl);
 	    	    driver.manage().window().maximize();
-	    	    p1.fillfirstname(p2.first1,Config.firstname);
-	    	    p1.filllastname(p2.last1,Config.lastname);
+	    	    p1.fillfirstname(p2.first1,ConfigBase.firstname);
+	    	    p1.filllastname(p2.last1,ConfigBase.lastname);
 	    	    p1.fillgender(p2.gender1);
 	    	    p1.fillexp(p2.exp1);
-	    	    p1.filldate(p2.date1,Config.date);
+	    	    p1.filldate(p2.date1,ConfigBase.date);
 	    	    p1.fillprofession(p2.prof1);
 	    	    p1.download(p2.link1);
 	    	    p1.fillcontinent(p2.cons1);
@@ -80,7 +82,7 @@ public class FormTest extends Base
 	    //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	    
 	    String actual1=driver.getCurrentUrl();
-	    if(Config.formUrl.equalsIgnoreCase(actual1))
+	    if(ConfigBase.formUrl.equalsIgnoreCase(actual1))
 	     {
 	       System.out.println("************Fill the Automation-practice form*****************");
 	      if(w1.isDisplayed()==true)
