@@ -1,45 +1,51 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.toolsqa.tcs</groupId>
-  <artifactId>toolsqatest</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-<packaging>jar</packaging>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-    <build>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.toolsqa.tcs</groupId>
+	<artifactId>toolsqatest</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<build>
 		<finalName>toolsqatest</finalName>
+
+
+
 		<plugins>
 			<plugin>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.1</version>
-            <configuration>
-                <fork>true</fork>
-                <executable>C:\Program Files\Java\jdk1.8.0_60\bin\javac.exe</executable>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.5.1</version>
+				<configuration>
+                <source>C:\Program Files\Java\jdk1.8.0_60\javac.exe</source>
+                <target>C:\Program Files\Java\jdk1.8.0_60\javac.exe</target>
             </configuration>
-        </plugin>
+			</plugin>
+	
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.19.1</version>
 				<configuration>
 					<suiteXmlFiles>
-						<suiteXmlFile>testng.xml</suiteXmlFile>
+						<suiteXmlFile>C:\toolsqatest\src\test\resources\testng.xml</suiteXmlFile>
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>
 		</plugins>
 		<testResources>
-	<testResource>
-        <directory>src/test/resources</directory>
-        <includes>
-          <include>log4j.properties</include>
-        </includes>
-      </testResource>
-    </testResources>
-    
+			<testResource>
+				<directory>src/test/resources</directory>
+				<includes>
+					<include>log4j.properties</include>
+				</includes>
+			</testResource>
+		</testResources>
+
 	</build>
-   <dependencies>
+	<dependencies>
 		<!-- https://mvnrepository.com/artifact/log4j/log4j -->
 		<dependency>
 			<groupId>log4j</groupId>
@@ -53,7 +59,7 @@
 			<version>2.53.1</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
-		
+
 		<!-- https://mvnrepository.com/artifact/org.uncommons/reportng -->
 		<dependency>
 			<groupId>org.uncommons</groupId>
@@ -103,70 +109,100 @@
 			<artifactId>mail</artifactId>
 			<version>1.4.7</version>
 		</dependency>
-		<dependency> 
-   <groupId>info.cukes</groupId> 
-   <artifactId>cucumber-java</artifactId> 
-   <version>1.2.5</version> 
-   <scope>test</scope> 
-</dependency>
-<dependency> 
-   <groupId>info.cukes</groupId> 
-   <artifactId>cucumber-junit</artifactId> 
-   <version>1.2.5</version> 
-   <scope>test</scope> 
-</dependency>
-<!-- https://mvnrepository.com/artifact/info.cukes/gherkin -->
+	<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-firefox-driver -->
 <dependency>
-    <groupId>info.cukes</groupId>
-    <artifactId>gherkin</artifactId>
-    <version>2.12.2</version>
-    <scope>provided</scope>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>selenium-firefox-driver</artifactId>
+    <version>3.8.1</version>
 </dependency>
+	
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-java</artifactId>
+			<version>1.2.5</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-junit</artifactId>
+			<version>1.2.5</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/info.cukes/gherkin -->
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>gherkin</artifactId>
+			<version>2.12.2</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-core</artifactId>
+			<version>1.2.5</version>
+		</dependency>
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-groovy</artifactId>
+			<version>1.2.5</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 <dependency>
-        <groupId>info.cukes</groupId>
-        <artifactId>cucumber-core</artifactId>
-        <version>1.2.5</version>
-    </dependency>
-    <dependency>
-    <groupId>info.cukes</groupId>
-    <artifactId>cucumber-groovy</artifactId>
-    <version>1.2.5</version>
-    <scope>test</scope>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>5.1.18</version>
 </dependency>
-<!-- https://mvnrepository.com/artifact/junit/junit -->
-<dependency>
-    <groupId>junit</groupId>
-    <artifactId>junit</artifactId>
-    <version>4.11</version>
-    <scope>test</scope>
+		
+
+		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.9.8</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+    <groupId>com.google.guava</groupId>
+    <artifactId>guava</artifactId>
+    <version>22.0</version>
 </dependency>
+ <dependency>
+     <groupId>com.google.api-client</groupId>
+     <artifactId>google-api-client-appengine</artifactId>
+     <version>1.23.0</version>
+     <exclusions>
+        <exclusion>
+          <groupId>com.google.guava</groupId>
+          <artifactId>guava-jdk5</artifactId>
+       </exclusion>
+    </exclusions>
+ </dependency>
 
-<!-- https://mvnrepository.com/artifact/org.testng/testng -->
-<dependency>
-    <groupId>org.testng</groupId>
-    <artifactId>testng</artifactId>
-    <version>6.9.8</version>
-    <scope>test</scope>
-</dependency>
-
-<!-- https://mvnrepository.com/artifact/com.beust/jcommander -->
+		<!-- https://mvnrepository.com/artifact/com.beust/jcommander -->
 
 
 
 
-<!-- https://mvnrepository.com/artifact/org.sikuli/sikuli-webdriver -->
+		<!-- https://mvnrepository.com/artifact/org.sikuli/sikuli-webdriver -->
 
 
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<!-- https://mvnrepository.com/artifact/org.sikuli/sikuli-api -->
-<!-- https://mvnrepository.com/artifact/org.sikuli/sikuli-webdriver -->
-<!-- https://mvnrepository.com/artifact/com.sikulix/sikulixapi -->
+		<!-- https://mvnrepository.com/artifact/org.sikuli/sikuli-webdriver -->
+		<!-- https://mvnrepository.com/artifact/com.sikulix/sikulixapi -->
 
 
 
 
-		
-		
+
+
 	</dependencies>
-	
+
 </project>

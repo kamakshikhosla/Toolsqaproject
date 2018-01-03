@@ -13,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 import org.testng.annotations.*;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.TestRunner;
 import org.testng.SuiteRunner;
 import org.testng.TestNG;
@@ -24,7 +25,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Listeners;
-import utilities.Config;
+import utilities.ConfigBase;
 
 //@Listeners(ListenerTest.class)
 
@@ -37,9 +38,10 @@ public class CucumberTest extends Base
     private Cucumber1 s2;
     private static final Logger log= Logger.getLogger("devpinoyLogger");
     
-     @Test
+     @Test(retryAnalyzer =testing8.ListenerTest.class)
      public void goTosubcategory()
      {
+    	 Reporter.log("Bravo!! test case passed");
         s1=new CucumberTest();
         s2=new Cucumber1(driver);
       // Logger log = Logger.getLogger(CucumberTest.class.getName());
@@ -48,9 +50,9 @@ public class CucumberTest extends Base
         s1.subsubnav(s2.subsubnav1);
         s1.navigate(s2.nav1);
         s1.subnavigate(s2.nav2);
-        s1.subscribe(s2.email1,Config.mail1);
+        s1.subscribe(s2.email1,ConfigBase.mail1);
         s1.subclick(s2.sub1);
-       // s1.entery(s2.cap);
+        //s1.entery(s2.cap);
         
      }
      
@@ -62,7 +64,7 @@ public class CucumberTest extends Base
         // System.out.println(handle1);
          //driver.switchTo().window(handle1.get(1));
        //driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
-       driver.get(Config.BaseUrl);
+       driver.get(ConfigBase.BaseUrl);
        driver.manage().window().maximize();
        System.out.println(t1.getText());
       // List<WebElement> E2=driver.findElements(By.xpath("//a[@class=\"ripple\"][@data-level=\"2\"]"));
@@ -143,7 +145,7 @@ public class CucumberTest extends Base
           public void navigate(List<WebElement> t4)
           {
            String match1=driver.getCurrentUrl();
-           if(match1.equalsIgnoreCase(Config.cucumber1))
+           if(match1.equalsIgnoreCase(ConfigBase.cucumber1))
            {
               // List<WebElement> list1=driver.findElements(By.xpath("//ul[@class=\"custom-nav\"]/li/a"));
               // WebElement list2=driver.findElement(By.partialLinkText("JUnit Test Runner Class"));
@@ -186,7 +188,7 @@ public class CucumberTest extends Base
               String bal="http://toolsqa.com/cucumber/junit-test-runner-class/";
                if(t6.isDisplayed()==true && bal.equalsIgnoreCase(url3))
                {
-                   t6.sendKeys(Config.mail1);
+                   t6.sendKeys(ConfigBase.mail1);
                }
                try {
           	        Thread.sleep(2000);

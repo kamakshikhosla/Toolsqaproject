@@ -1,28 +1,22 @@
 package Core;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
+
 
 //import java.io.File;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.xml.DOMConfigurator;
-import org.openqa.selenium.OutputType;
-import org.apache.commons.io.FileUtils;
-//import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 
 //import com.gargoylesoftware.htmlunit.javascript.host.file.File;
 //import com.sun.jna.platform.FileUtils;
 
 //import testing8.Demo;
-import utilities.Config;
+import utilities.ConfigBase;
 
 public class Base 
 {
@@ -31,25 +25,26 @@ public class Base
 	//Logger log1 = Logger.getLogger("devpinoyLogger");
 	 //private static org.apache.log4j.Logger log = Logger.getLogger(LogClass.class);
 	//public static com.gargoylesoftware.htmlunit.WebConsole.Logger log=(com.gargoylesoftware.htmlunit.WebConsole.Logger) Logger.getLogger("devpinoyLogger");
-    
-	   @BeforeSuite
+	
+	
+	   @BeforeClass
 	     public static void setUp() 
 	     {
 		  // DOMConfigurator.configure("src/test/resources/log4j.properties"); 
 	      
 	      //System.setProperty("webdriver.firefox.driver","D:\\geckodriver.exe");
-	      if(Config.browser!=null)
+	      if(ConfigBase.browser!=null)
 	      {
-	          if(Config.browser.equalsIgnoreCase("chrome"))
+	          if(ConfigBase.browser.equalsIgnoreCase("chrome"))
 	          {
 	        	  System.setProperty("webdriver.chrome.driver","C:\\Users\\1037361\\workspace\\testing8\\src\\test\\resources\\chromedriver.exe");
 	             driver  = new ChromeDriver(); 
 	            
 	            log.debug("browser chrome is opened");
 	          }
-	          else if(Config.browser.equalsIgnoreCase("firefox"))
+	          else if(ConfigBase.browser.equalsIgnoreCase("firefox"))
 	          {
-	        	  System.setProperty("webdriver.firefox.driver","C:\\Users\\1037361\\workspace\\testing8\\src\\test\\resources\\geckodriver.exe");
+	        	  System.setProperty("webdriver.firefox.driver","C:\\toolsqatest\\src\\test\\resources\\geckodriver.exe");
 	             driver  = new FirefoxDriver();
 	          }
 	      }
@@ -66,9 +61,9 @@ public class Base
 	     // driver.navigate().refresh();
 	     }
 	   
-	 @AfterSuite
+	 @AfterClass
 	 
-	public static void tearDownClass() 
+	public static void tearDownClass() throws InterruptedException 
 	 {
 	  
 	   
@@ -101,7 +96,8 @@ public class Base
 	//}
 		
 	//driver.manage().deleteAllCookies();
-		 log.debug("cookies deleted");
+		 Thread.sleep(2000);
+		 //log.debug("cookies deleted");
 
 	//driver.close();
 		 log.debug("Browser closed");
